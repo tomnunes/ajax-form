@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Enjoei - Teste front-end</title>
+    <link rel="icon" type="image/x-icon" href="https://www.enjoei.com.br/favicon.ico" />
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+    <script>$.mockjax({url: '/api/newsletter',type: 'post', responseText: { 'status': 'Email cadastrado com sucesso' }});</script>
+
+    <style>
+      body {
+        background: #fafafa;
+      }
+
+      .Test {
+        display: block;
+        width: 85%;
+        max-width: 500px;
+
+        margin: 6.5% auto;
+
+        text-align: center;
+      }
+
+        .Test__logo {
+          display: block;
+
+          margin: 7% auto 0;
+        }
+
+        .Test__description {
+          margin: 0;
+
+          font-size: 14px;
+          font-family: Verdana;
+          line-height: 22px;
+          color: #555555;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="Test">
+      <p class="Test__description">
+        Olá. <br><br>
+        Precisamos que uma modal abra quando o usuário clicar <strong class="js-open-modal">aqui</strong>. <br><br>
+        O desenho da modal, que deve ser responsiva, está incluído na pasta que enviamos a você. <br><br>
+        Quando o formulário da modal é enviado, os dados devem ser postados com Ajax em <strong>/api/newsletter</strong> e a modal deve ser fechada. <br><br>
+        (Já foi feito um retorno falso para a URL da API, então fique tranquilo, você só precisa fazer o POST.) <br><br>
+        Você pode subir um servidor com <strong>php -S 0.0.0.0:8000</strong>, <strong>python -m SimpleHTTPServer</strong> ou <strong>ruby -run -ehttpd . -p 8000</strong>. <br><br>
+        Use (ou não use) qualquer biblioteca, ferramenta ou convenção que achar indicada para finalizar a tarefa. <br><br>
+        Por favor, faça um commit (Git) sem alterações quando iniciar a tarefa.
+      </p>
+
+      <img class="Test__logo" src="https://assets3.enjoei.com.br/assets/v2/shared/brand/logo-desktop-x1-c6efd4344c5d7ef839202be76c153e77.png" alt="Enjoei :P">
+    </div>
+  </body>
+
+</html>
