@@ -4,6 +4,7 @@
 
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enjoei - Teste front-end</title>
     <link rel="icon" type="image/x-icon" href="https://www.enjoei.com.br/favicon.ico" />
 
@@ -12,8 +13,14 @@
     <script>$.mockjax({url: '/api/newsletter',type: 'post', responseText: { 'status': 'Email cadastrado com sucesso' }});</script>
 
     <style>
+      * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
       body {
         background: #fafafa;
+        font-family: Verdana;
       }
 
       .Test {
@@ -26,20 +33,93 @@
         text-align: center;
       }
 
-        .Test__logo {
-          display: block;
+      .Test__logo {
+        display: block;
 
-          margin: 7% auto 0;
+        margin: 7% auto 0;
+      }
+
+      .Test__description {
+        margin: 0;
+
+        font-size: 14px;
+        font-family: Verdana;
+        line-height: 22px;
+        color: #555555;
+      }
+
+      .modal {
+          background-color: rgb(247, 114, 116);
+          border-radius: 10px;
+          color: rgb(255,255,255);
+          left: 50%;
+          height: 480px;
+          opacity: 0;
+          padding: 20px 23px;
+          position: absolute;
+          top: -50%;
+          visibility: hidden;
+          box-sizing: border-box;
+          -webkit-transition: all 0.4s ease-in-out;
+      }
+      .modal h3 {
+        font-size: 24px;
+        font-weight: normal;
+        line-height: 1em;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .modal p {
+        font-size: 14px;
+        line-height: 1.6em;
+        text-align: center;
+      }
+      .modal form {
+        margin: 10px 0;
+      }
+      .modal label {
+        display: block;
+        font-size: 12px;
+        line-height: 1em;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+      .modal input[type="text"] {
+        border: none;
+        border-radius: 4px;
+        display: block;
+        height: 50px;
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      .modal button {
+        background-color: rgb(255,255,255);
+        border: none;
+        border-radius: 4px;
+        color: #f77274;
+        font-size: 16px;
+        padding: 14px 0;
+        width: 100%;
+      }
+      .modal .close {
+        display: block;
+        margin: 0 0 0 auto;
+        width: 12px;
+        cursor: pointer;
+      }
+      #modal.visible {
+        visibility: visible;
+        opacity: 1;
+        top: 10%;
+      }
+      @media (max-width: 1023px) {
+        .modal {
+          height: 395px;
+          margin-left: -160px;
+          width: 320px;
         }
-
-        .Test__description {
-          margin: 0;
-
-          font-size: 14px;
-          font-family: Verdana;
-          line-height: 22px;
-          color: #555555;
-        }
+      }
     </style>
   </head>
 
@@ -58,6 +138,46 @@
 
       <img class="Test__logo" src="https://assets3.enjoei.com.br/assets/v2/shared/brand/logo-desktop-x1-c6efd4344c5d7ef839202be76c153e77.png" alt="Enjoei :P">
     </div>
-  </body>
+    <div id="modal" class="modal">
+      <span class="js-open-modal close">X</span>
+      <div class="content-modal">
+        <h3>enjunews</h3>
+        <p>receba novidades do site mais legal do brasiô, coloca seu nome e email ali embaixo e manda bala :)</p>
+        <form action="" id="news-default">
+          <label for="name">nome</label>
+          <input type="text" id="name" />
 
+          <label for="email">email</label>
+          <input type="text" id="email" />
+
+          <button type="submit" class="bt bt-default">quero receber novidades</button>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript">
+      jQuery(window).load(function() {
+          modalFunc();
+        jQuery(".js-open-modal").click(function() {
+          modalFunc();
+        });
+        jQuery(document).keyup(function (e) {
+          if (e.keyCode == 27) {
+            modalFunc();
+          }
+        });
+
+        function modalFunc() {
+          if (jQuery("#modal").hasClass("visible")) {
+            jQuery("#modal").removeClass("visible");
+          } else {
+            jQuery("#modal").addClass("visible");
+          };
+        }
+
+        jQuery("#news-default").submit(function() {
+
+        });
+      })
+    </script>
+  </body>
 </html>
