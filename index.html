@@ -14,6 +14,8 @@
 
     <style>
       * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -48,17 +50,20 @@
         color: #555555;
       }
 
+      /* modal styles */
       .modal {
           background-color: rgb(247, 114, 116);
-          border-radius: 10px;
+          border-radius: 8px;
           color: rgb(255,255,255);
           left: 50%;
-          height: 480px;
+          height: 395px;
+          margin-left: -160px;
           opacity: 0;
           padding: 20px 23px;
           position: absolute;
           top: -50%;
           visibility: hidden;
+          width: 320px;
           box-sizing: border-box;
           -webkit-transition: all 0.4s ease-in-out;
       }
@@ -66,13 +71,14 @@
         font-size: 24px;
         font-weight: normal;
         line-height: 1em;
-        margin: 0;
+        margin: 0 0 20px;
         text-align: center;
         text-transform: uppercase;
       }
       .modal p {
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.6em;
+        margin-bottom: 20px;
         text-align: center;
       }
       .modal form {
@@ -91,6 +97,7 @@
         display: block;
         height: 50px;
         margin-bottom: 15px;
+        padding: 10px;
         width: 100%;
       }
       .modal button {
@@ -113,10 +120,52 @@
         opacity: 1;
         top: 10%;
       }
-      .modal {
-        height: 395px;
-        margin-left: -160px;
-        width: 320px;
+
+      /* responsive modal styles */
+      @media screen and (min-width: 767px) and (max-width: 1023px) {
+        .modal {
+          background: url("cat_small.png") no-repeat center bottom rgb(247, 114, 116);
+          height: 478px;
+          margin-left: -314px;
+          width: 628px;
+        }
+        .modal .content-modal {
+          width: 420px;
+          margin: 20px auto 0;
+        }
+        .modal form {
+          margin: 0 auto;
+          width: 375px;
+        }
+        .modal h3 {
+          font-size: 28px;
+        }
+        .modal p {
+          font-size: 15px;
+        }
+      }
+      @media screen and (min-width: 1024px) and (max-width: 1440px) {
+        .modal {
+          background: url("cat_big.png") no-repeat 15% 65% rgb(247, 114, 116);
+          height: 480px;
+          margin-left: -388px;
+          width: 776px;
+        }
+        .modal .content-modal {
+          margin: 20px auto 0;
+        }
+        .modal form {
+          padding: 0 40px 0 315px;
+          margin-top: 30px;
+        }
+        .modal h3 {
+          font-size: 28px;
+        }
+        .modal p {
+          font-size: 15px;
+          margin: 0 auto;
+          max-width: 430px;
+        }
       }
     </style>
   </head>
