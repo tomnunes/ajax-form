@@ -110,10 +110,12 @@
         width: 100%;
       }
       .modal .close {
+        background: url("fechar.png") no-repeat 0 0 transparent;
+        cursor: pointer;
         display: block;
         margin: 0 0 0 auto;
-        width: 12px;
-        cursor: pointer;
+        height: 16px;
+        width: 16px;
       }
       #modal.visible {
         visibility: visible;
@@ -186,11 +188,11 @@
       <img class="Test__logo" src="https://assets3.enjoei.com.br/assets/v2/shared/brand/logo-desktop-x1-c6efd4344c5d7ef839202be76c153e77.png" alt="Enjoei :P">
     </div>
     <div id="modal" class="modal">
-      <span class="js-open-modal close">X</span>
+      <span class="js-open-modal close"></span>
       <div class="content-modal">
         <h3>enjunews</h3>
         <p>receba novidades do site mais legal do brasiô, coloca seu nome e email ali embaixo e manda bala :)</p>
-        <form action="" id="news-default">
+        <form action="" id="news-default" method="POST">
           <label for="name">nome</label>
           <input type="text" id="name" />
 
@@ -203,16 +205,19 @@
     </div>
     <script type="text/javascript">
       jQuery(window).load(function() {
-          modalFunc();
+
         jQuery(".js-open-modal").click(function() {
           modalFunc();
         });
+
+        // fechar modal com esc
         jQuery(document).keyup(function (e) {
           if (e.keyCode == 27) {
             modalFunc();
           }
         });
 
+        // função de mostrar/esconder modal
         function modalFunc() {
           if (jQuery("#modal").hasClass("visible")) {
             jQuery("#modal").removeClass("visible");
@@ -221,8 +226,22 @@
           };
         }
 
+        // form newsletter
         jQuery("#news-default").submit(function() {
+          event.preventDefault();
 
+          var url = "/api/newsletter";
+
+          jQuery.ajax({
+            type: "POST",
+            url: url,
+            data: jQuery("#news-default").serialize(),
+            success: function(data) {
+              modalFunc();
+            }
+          });
+
+          return false;
         });
       })
     </script>
